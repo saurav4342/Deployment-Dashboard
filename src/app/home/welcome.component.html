@@ -35,8 +35,12 @@
         <div class="row well"  *ngFor="let release of deployments ">
             {{release.release}}
             <div *ngFor="let deployment of release.deploymentMap">
-           <div class="col-md-2">
+           <div class="col-md-2" *ngIf="deployment.deployment.pod.pod!='BUILD'">
                <b>{{deployment.deployment.pod.pod}}</b>
+            </div>
+
+           <div class="col-md-2" *ngIf="deployment.deployment.pod.pod=='BUILD'">
+               <b>{{deployment.deploymentId}}</b>
             </div>
             <div class="col-md-1 text-center" >
                  {{deployment.version}}
