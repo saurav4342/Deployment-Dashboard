@@ -1,3 +1,8 @@
+export interface IResponse{
+	release:string;
+	deploymentMap:IDeploymentMap[];
+}
+
 export interface IDeploymentMap{
 	 deploymentId:string;
 	 deployment : IDeployment;

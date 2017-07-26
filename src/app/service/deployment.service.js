@@ -23,6 +23,9 @@ var DeploymentService = (function () {
     DeploymentService.prototype.handleError = function (error) {
         return Rx_1.Observable.throw(error.statusText);
     };
+    DeploymentService.prototype.showTestDetails = function (deployment) {
+        return deployment;
+    };
     return DeploymentService;
 }());
 DeploymentService = __decorate([

@@ -24,7 +24,23 @@ var WelcomeComponent = (function () {
     };
     WelcomeComponent.prototype.getDeploymentsByDate = function (date) {
         var _this = this;
-        this.deploymentService.getDeployments(date).subscribe(function (deployments) { _this.deployments = deployments; });
+        this.deploymentService.getDeployments(date).subscribe(function (deployments) {
+            _this.deployments = deployments;
+            _this.deployments.forEach(function (element) {
+                _this.deploymentMaps = element.deploymentMap;
+                _this.deploymentMaps.sort(function (name1, name2) {
+                    if (name1.deployment.pod.pod < name2.deployment.pod.pod) {
+                        return -1;
+                    }
+                    else if (name1.deployment.pod.pod > name2.deployment.pod.pod) {
+                        return 1;
+                    }
+                    else {
+                        return 0;
+                    }
+                });
+            });
+        });
     };
     return WelcomeComponent;
 }());

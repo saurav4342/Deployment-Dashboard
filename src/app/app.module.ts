@@ -7,10 +7,10 @@ import { DeploymentService } from './service/deployment.service'
 import { HttpModule } from '@angular/http'
 import { RouterModule } from '@angular/router'
 import { FormsModule } from '@angular/forms'
-
+import { ModalComponent } from './home/modal.component'
 @NgModule({
   imports: [ BrowserModule,HttpModule,RouterModule,FormsModule ],
-  declarations: [ AppComponent,WelcomeComponent ],
+  declarations: [ AppComponent,WelcomeComponent,ModalComponent ],
   bootstrap: [ AppComponent ],
   providers:[DeploymentService]
 })
