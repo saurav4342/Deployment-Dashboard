@@ -38,7 +38,7 @@
         <br>
         <div class="row well"  *ngFor="let release of deployments " id="{{release.release}}">
            <p> {{release.release}}</p>
-            <div class="clickable" *ngFor="let deployment of release.deploymentMap">
+            <div class="deployment-list row" *ngFor="let deployment of release.deploymentMap">
 
            <div class="col-md-2" *ngIf="deployment.deployment.pod.pod!='BUILD'">
                <b>{{deployment.deployment.pod.pod}}</b>

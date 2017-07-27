@@ -9,3 +9,6 @@ li {
 div.panel-heading {
    font-size: x-large; 
 }
+.deployment-list{
+border:solid 1px black;
+}
