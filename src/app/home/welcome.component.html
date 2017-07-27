@@ -1,0 +1,100 @@
+﻿<div class="panel panel-primary">
+    <div class="panel-heading">
+        {{pageTitle}}
+    </div>
+    <div class="panel-body">
+        <div class="row">
+        <form #dateForm="ngForm" (ngSubmit)="getData(dateForm.value)" autocomplete="off">
+         <div class="col-md-1"><h4>Select a Date: </h4></div>
+         <div class="col-md-2 form-group"><input type="date" name="date" (ngModel)="date" id="date"></div>
+         <div class="col-md-1"><button type="submit">Submit</button></div>
+         <div class="col-md-1" *ngFor="let release of deployments; let i=index;"><a href="#{{release.release}}" (click)="setActive(i)">{{release.release}}</a></div>
+        </form>
+        </div>
+        <table class="table table-bordered" *ngFor="let release of deployments " id="{{release.release}}">
+        <thead class="thead-default">
+            <tr>
+             <td class="col-md-2">
+                 POD
+                 </td>
+            <td class="col-md-1">
+                Version
+            </td>
+            <td class="col-md-1">
+                Release
+            </td>
+            <td class="col-md-1">
+                Deployment Status
+            </td>
+            <td class="col-md-2">
+                Date
+            </td>
+            <td class="col-md-1">
+                SystemCheck
+            </td>
+            <td class="col-md-5">
+                IVT
+            </td>
+            </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let deployment of release.deploymentMap">
+           <td class="col-md-2" *ngIf="deployment.deployment.pod.pod!='BUILD'">
+               <b>{{deployment.deployment.pod.pod}}</b>
+               <span *ngIf="deployment.deployment.pod.pod.includes('WFN')">(WFN)</span>
+               <span *ngIf="deployment.deployment.pod.pod.includes('TLM')">(TLM)</span>
+               <span *ngIf="deployment.deployment.pod.pod.includes('BUILD')">(DB)</span>
+               <span *ngIf="deployment.deployment.pod.pod.includes('AP')">(AP)</span>
+               <span *ngIf="deployment.deployment.pod.pod.includes('ETC')">(ETC)</span>
+               <span *ngIf="deployment.deployment.pod.pod.includes('HDC')">(HDC)</span>
+               <span *ngIf="deployment.deployment.pod.pod.includes('IPE')">(IPE)</span>
+               <span *ngIf="deployment.deployment.pod.pod.includes('DIT')">(DIT)</span>
+               <span *ngIf="deployment.deployment.pod.pod.includes('FIT')">(FIT)</span>
+               <span *ngIf="deployment.deployment.pod.pod.includes('AUT')">(AUTO)</span>
+            </td>
+
+           <td class="col-md-1" *ngIf="deployment.deployment.pod.pod=='BUILD'">
+               <b>{{deployment.deploymentId}}</b>
+               <span *ngIf="deployment.deployment.pod.pod.includes('BUILD')">(DB)</span>
+            </td>
+            <td class="col-md-1">
+                 {{deployment.version}}
+            </td>
+             <td class="col-md-1">
+                 {{deployment.application}}
+            </td>
+             <td class="col-md-1" *ngIf="deployment.deployed==true">
+                 <span class="fa fa-check"  style="color:limegreen"></span> {{deployment.deployment.deploymentStatus}}
+            </td>
+            <td class="col-md-1" *ngIf="deployment.deployed==false">
+             <span class="fa fa-close"  style="color:red"></span> {{deployment.deployment.deploymentStatus}}
+            </td>
+             <td class="col-md-2">
+                 {{deployment.deployment.lastDeploymentTime | date:'medium'}}
+            </td>
+             <td class="col-md-1 text-center" >
+                 <span class="fa fa-check" *ngIf="deployment.systemCheck==true" style="color:limegreen"></span>
+                 <span class="fa fa-close" *ngIf="deployment.systemCheck==false" style="color:red"></span>
+                 <span *ngIf="deployment.deployment.deploymentStatus=='No Deployment'">NA</span>
+            </td>
+            <td class="col-md-4">
+                <div *ngIf="deployment.ivtPresent==false">
+                    NA
+                </div>
+                <div *ngFor="let ivt of deployment.ivt; let i=index;">
+                    <b>Run {{i+1}} - {{ivt.timeStamp | date:'medium'}}</b>
+                <div *ngFor="let case of ivt.testCases; ">
+                <div *ngIf="case.success==false" style="color:crimson;">
+                          - {{case.testCaseTitle}}  
+                </div>
+                </div>
+                <hr>
+                </div>
+            </td>
+            
+        </tr>
+        </tbody>
+        </table>
+    </div>
+</div>
+<!-- Modal -->
