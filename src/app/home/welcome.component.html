@@ -8,6 +8,7 @@
          <div class="col-md-1"><h4>Select a Date: </h4></div>
          <div class="col-md-2 form-group"><input type="date" name="date" (ngModel)="date" id="date"></div>
          <div class="col-md-1"><button type="submit">Submit</button></div>
+         <div class="col-md-1">Go to :</div>
          <div class="col-md-1" *ngFor="let release of deployments; let i=index;"><a href="#{{release.release}}" (click)="setActive(i)">{{release.release}}</a></div>
         </form>
         </div>
