@@ -68,7 +68,7 @@
                  <span class="fa fa-check"  style="color:limegreen"></span> {{deployment.deployment.deploymentStatus}}
             </td>
             <td class="col-md-1" *ngIf="deployment.deployed==false">
-             <span class="fa fa-exclamation-triangle"  style="color:red"></span>{{deployment.deployment.deploymentStatus}}
+             <span class="fa fa-exclamation-triangle"  style="color:red"></span> {{deployment.deployment.deploymentStatus}}
             </td>
              <td class="col-md-2">
                  {{deployment.deployment.lastDeploymentTime | date:'medium'}}
