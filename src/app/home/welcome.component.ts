@@ -19,6 +19,10 @@ export class WelcomeComponent implements OnInit{
     ngOnInit(){ 
      this.getDeploymentsByDate(Date.now())
     }
+    refreshData(){
+        console.log("refreshing");
+        this.getDeploymentsByDate(Date.now());
+    }
     getData(formValue:any){
         this.date= new Date(formValue.date).getTime();
         this.getDeploymentsByDate(this.date)

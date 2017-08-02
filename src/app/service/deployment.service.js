@@ -16,7 +16,7 @@ var DeploymentService = (function () {
         this.http = http;
     }
     DeploymentService.prototype.getDeployments = function (date) {
-        return this.http.get("http://cdlatezlm01ap2:8080/api/deploy/all/" + date).map(function (response) {
+        return this.http.get("http://localhost:8080/api/deploy/all/" + date).map(function (response) {
             return response.json();
         }).catch(this.handleError);
     };

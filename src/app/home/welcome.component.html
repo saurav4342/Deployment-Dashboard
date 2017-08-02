@@ -1,6 +1,11 @@
 ﻿<div class="panel panel-primary">
     <div class="panel-heading">
-        {{pageTitle}}
+        <div class="row">
+        <div class="col-md-9">{{pageTitle}}</div>
+        <div class="col-md-3">
+            <button class="btn btn-success" (click)="refreshData()"><i class="fa fa-refresh"></i> Refresh Data</button>
+            </div>
+        </div>
     </div>
     <div class="panel-body">
         <div class="row">

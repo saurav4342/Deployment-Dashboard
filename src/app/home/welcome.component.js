@@ -18,6 +18,10 @@ var WelcomeComponent = (function () {
     WelcomeComponent.prototype.ngOnInit = function () {
         this.getDeploymentsByDate(Date.now());
     };
+    WelcomeComponent.prototype.refreshData = function () {
+        console.log("refreshing");
+        this.getDeploymentsByDate(Date.now());
+    };
     WelcomeComponent.prototype.getData = function (formValue) {
         this.date = new Date(formValue.date).getTime();
         this.getDeploymentsByDate(this.date);

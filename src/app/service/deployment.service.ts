@@ -9,7 +9,7 @@ constructor(private http : Http){
 
 }
 getDeployments(date:number):Observable<IResponse[]>{
-    return this.http.get("http://cdlatezlm01ap2:8080/api/deploy/all/"+date).map((response:Response) => {
+    return this.http.get("http://localhost:8080/api/deploy/all/"+date).map((response:Response) => {
        return <IResponse>response.json();
     }).catch(this.handleError)  
 }
