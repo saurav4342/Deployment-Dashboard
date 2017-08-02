@@ -10,18 +10,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
-var Rx_1 = require("rxjs/Rx");
+var Observable_1 = require("rxjs/Observable");
 var DeploymentService = (function () {
     function DeploymentService(http) {
         this.http = http;
     }
     DeploymentService.prototype.getDeployments = function (date) {
-        return this.http.get("http://cdlatezlm01ap2:8080/api/deploy/all/" + date).map(function (response) {
+        return this.http.get("http://localhost:8080/api/deploy/all/" + date).map(function (response) {
             return response.json();
         }).catch(this.handleError);
     };
     DeploymentService.prototype.handleError = function (error) {
-        return Rx_1.Observable.throw(error.statusText);
+        return Observable_1.Observable.throw(error.statusText);
     };
     DeploymentService.prototype.showTestDetails = function (deployment) {
         return deployment;
