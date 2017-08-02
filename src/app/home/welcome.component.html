@@ -52,6 +52,8 @@
                <span *ngIf="deployment.deployment.pod.pod.includes('DIT')">(DIT)</span>
                <span *ngIf="deployment.deployment.pod.pod.includes('FIT')">(FIT)</span>
                <span *ngIf="deployment.deployment.pod.pod.includes('AUT')">(AUTO)</span>
+               <span *ngIf="deployment.deployment.pod.pod.includes('DB')">(DB)</span>
+               <span *ngIf="deployment.deployment.pod.pod.includes('_')">(DB)</span>
             </td>
 
            <td class="col-md-1" *ngIf="deployment.deployment.pod.pod=='BUILD'">
